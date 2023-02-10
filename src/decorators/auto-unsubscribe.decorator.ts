@@ -7,7 +7,7 @@ interface Unsubscribable {
 const AutoUnsusbscriber = Symbol('@AutoUnsubscribe');
 
 export interface AutoUnsubscribeSettings {
-  destructor?: string;
+  destructor?: string; /* The class method called when it is destroyed. Defaults to ngOnDestroy */
 }
 
 /**
@@ -31,7 +31,7 @@ export function AutoUnsubscribe(settings: AutoUnsubscribeSettings = {}) {
 }
 
 export interface SubscribesSettings {
-  ignoreMissing?: boolean;
+  ignoreMissing?: boolean; /* If true, does not throw an error if the method does not return a subscription */
 }
 
 /**
