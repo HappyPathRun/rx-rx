@@ -1,18 +1,18 @@
-import { TimePerformance, TimePerformanceLogEntry } from "./time-performance.decorator";
+import { Timer, TimerLogEntry } from "./timer.decorator";
 
-let logEntries: TimePerformanceLogEntry[] = [];
-const log = (entry: TimePerformanceLogEntry) => logEntries.push(entry);
+let logEntries: TimerLogEntry[] = [];
+const log = (entry: TimerLogEntry) => logEntries.push(entry);
 
 class MyClass {
   skipCount = 0;
   skipMax = 3;
 
-  @TimePerformance({ log })
+  @Timer({ log })
   public testDefaults(): void {
     // Do nothing
   }
 
-  @TimePerformance({
+  @Timer({
     log,
     label: () => "MyClass.testLabel",
   })
@@ -20,7 +20,7 @@ class MyClass {
     // Do nothing
   }
 
-  @TimePerformance({
+  @Timer({
     log,
     skip: ({ target }) => target.skipCount >= target.skipMax,
   })
@@ -29,7 +29,7 @@ class MyClass {
     return this.skipCount;
   }
 
-  @TimePerformance({
+  @Timer({
     log,
     label: ({ propertyKey }, args) => `${propertyKey.toString()}-${args[0]}`,
   })
@@ -42,7 +42,7 @@ beforeEach(() => {
   logEntries = [];
 });
 
-it('should log the time performance', () => {
+it("should log the time performance", () => {
   const myClass = new MyClass();
   myClass.testDefaults();
 
@@ -51,9 +51,9 @@ it('should log the time performance', () => {
   expect(entry.label).toBe("testDefaults");
   expect(entry.propertyKey).toBe("testDefaults");
   expect(entry.call).toBe(1);
-})
+});
 
-it('should log the time performance with a label', () => {
+it("should log the time performance with a label", () => {
   const myClass = new MyClass();
   myClass.testLabel();
 
@@ -64,7 +64,7 @@ it('should log the time performance with a label', () => {
   expect(entry.call).toBe(1);
 });
 
-it('should skip logging when skip returns true', () => {
+it("should skip logging when skip returns true", () => {
   const myClass = new MyClass();
   for (let i = 0; i < myClass.skipMax; i++) {
     const count = myClass.testSkip();
@@ -79,7 +79,7 @@ it('should skip logging when skip returns true', () => {
   });
 });
 
-it('should log the time performance with a label and args', () => {
+it("should log the time performance with a label and args", () => {
   const myClass = new MyClass();
   myClass.testLabelWithArgs("test");
 

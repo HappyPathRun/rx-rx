@@ -1,6 +1,6 @@
-# TimePerformance
+# Timer
 
-Use the `@TimePerformance` decorator to log the time it takes for a method to execute.
+Use the `@Timer` decorator to log the time it takes for a method to execute.
 
 ## Why?
 
@@ -11,10 +11,10 @@ This decorator tracks the number of times a method is called, the total duration
 ## Usage
 
 ```ts
-import { TimePerformance } from "@happypath/rx-rx";
+import { Timer } from "@happypath/rx-rx";
 
 class MyClass {
-  @TimePerformance()
+  @Timer()
   myMethod() {
     // Do something
   }
