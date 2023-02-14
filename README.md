@@ -1,10 +1,10 @@
 # Rx Rx
 
-`@happypath/rx-rx` contains utility functions that we use for Angular and RxJs.
+`@happypathrun/rx-rx` contains utility functions that we use for Angular and RxJs.
 
 ## Installation
 
-`npm install @happypath/rx-rx` or `yarn add @happypath/rx-rx`
+`npm install @happypathrun/rx-rx --save-dev` or `yarn add --dev @happypathrun/rx-rx`
 
 ## Testing
 

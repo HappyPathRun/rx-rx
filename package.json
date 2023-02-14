@@ -1,8 +1,8 @@
 {
-  "name": "@happypath/rx-rx",
+  "name": "@happypathrun/rx-rx",
   "version": "1.0.0",
   "description": "A collection of helpers for Angular and RxJs provided by Happy Path",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "author": "Happy Path",
   "license": "MIT",
   "devDependencies": {
